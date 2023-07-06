@@ -9,7 +9,7 @@ server.use(logger);
 server.use(validator);
 server.use(express.json());
 
-server.get('/', (req, res) => res.send('Hello World'));
+server.get('/', (req, res) => res.status(200).send('Hello World'));
 
 server.get('/hello', (req, res) => {
   if (!req.query.name) {
