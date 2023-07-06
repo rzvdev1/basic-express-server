@@ -1,7 +1,7 @@
 'use strict';
 
 const supertest = require('supertest');
-const { server } = require('../server.js');
+const { server } = require('../src/server.js');
 const mockRequest = supertest(server);
 
 describe('server routes and functionality', () => {
@@ -18,6 +18,7 @@ describe('server routes and functionality', () => {
     });
 
     test('request to hello route sends string hello', async () => {
+      const name = 'John'; // Provide a valid name
       const response = await mockRequest.get(`/hello?name=${name}`);
       expect(response.status).toBe(200); // Expect a successful response
       expect(response.text).toBe(`Hello, ${name}`);

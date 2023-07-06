@@ -1,14 +1,10 @@
 'use strict';
 const express = require('express');
 const server = express();
-const pageNotFoundHandler = require('./src/errorHandling/404.js');
-const errorHandler = require('./src/errorHandling/500.js');
-const logger = require('./src/middleware/logger.js');
-const validator = require('./src/middleware/validator.js');
-
-function start(port) {
-  server.listen(port, () => console.log(`I am listening on port ${port}`));
-}
+const pageNotFoundHandler = require('./errorHandling/404.js');
+const errorHandler = require('./errorHandling/500.js');
+const logger = require('./middleware/logger.js');
+const validator = require('./middleware/validator.js');
 server.use(logger);
 server.use(validator);
 server.use(express.json());
@@ -37,5 +33,9 @@ server.get('/bad', (req, res, next) =>
 
 server.use('*', pageNotFoundHandler);
 server.use(errorHandler);
+
+function start(port) {
+  server.listen(port, () => console.log(`I am listening on port ${port}`));
+}
 
 module.exports = { server, start };
