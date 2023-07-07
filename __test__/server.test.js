@@ -31,7 +31,7 @@ describe('server routes and functionality', () => {
     });
 
     test('request with name query should return 200', async () => {
-      const response = await mockRequest.get('/hello?name=John');
+      const response = await mockRequest.get('/person?name=John');
       expect(response.status).toBe(200);
       expect(response.text).toBe('Hello, John');
     });
