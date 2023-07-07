@@ -22,7 +22,7 @@ server.get('/hello/:person', (req, res) => {
   res.send(`Hello, ${req.params.person}`);
 });
 
-server.post('/hello', (req, res) => {
+server.post('/person', (req, res) => {
   res.send(`Hello, ${req.body.name}`);
 });
 
